@@ -104,10 +104,10 @@ export default class Play {
 			)
 
 			drawText(
-				point.x + 32 * scale,
-				point.y + 46 * scale,
+				point.x + 150 * 0.4,
+				point.y + 150 * 0.6,
 				20 * scale,
-				'white',
+				'black',
 				'Montserrat-Regular',
 				point.value
 			)
@@ -133,14 +133,15 @@ export default class Play {
 				)
 	
 				//绘制分数
-				drawText(
-					halfCanvasWidth -  (65 * scale),
-					halfCanvasHeight / 1.7,
-					20 * scale,
-					'white',
-					'Montserrat-Regular',
-					'MY LEVEL ' + this.score * 10 
-					)
+				// drawText(
+				// 	halfCanvasWidth -  (65 * scale),
+				// 	halfCanvasHeight / 1.7,
+				// 	20 * scale,
+				// 	'white',
+				// 	'Montserrat-Regular',
+				// 	'MY LEVEL ' + this.score * 10 
+				// 	)
+					$("#myScore").html(this.score * 10)
 					sessionStorage.setItem('liveScore',this.score * 10);
 					$(".palyAgainBox").fadeIn(500);
 			// }
@@ -198,11 +199,19 @@ export default class Play {
 
 				drawText(
 					halfCanvasWidth - (45 * scale),
-					23 * scale,
-					20 * scale,
+					17 * scale,
+					15 * scale,
 					'white',
 					'Montserrat-Regular',
-					'分数: '+this.score * 10
+					'分数: '
+				)
+				drawText(
+					halfCanvasWidth - (5 * scale),
+					20 * scale,
+					25 * scale,
+					'white',
+					'Montserrat-Regular',
+					this.score * 10
 				)
 			}
 		// }
@@ -492,7 +501,7 @@ export default class Play {
 		for (var i = 0; i < numberOfPoints; i++) {
 			this.points.push({
 				x: this.cols[i],
-				y: -40,
+				y: -250,
 				value: Math.floor(Math.random() * 5) + 1
 			})
 		}

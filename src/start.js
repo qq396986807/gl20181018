@@ -19,6 +19,7 @@ export default class Start {
     BOLD_FONT_SIZE = 48
     CIRCLE_RADIUS = 10
     FirstFlag = true;
+    ani ;
 
     draw() {
         console.log('draw')
@@ -193,19 +194,19 @@ export default class Start {
                 n++;
             }
 
-            var ani = setInterval(function(){
+            this.ani = setInterval(function(){
                 if(n>208){
-                    clearInterval(ani);
+                    clearInterval(this.ani);
                 }else{
                     drawAni();
                 }
-                //console.log(n)
-            },1000/20)
+                console.log(n)
+            }.bind(this),1000/20)
             canvas.addEventListener("mousedown", this.onTouch)
             this.FirstFlag = false;
         }else{
             evt.preventDefault();
-
+            clearInterval(this.ani);
             if(evt.type === 'touchstart') {
                 this.useTouch = true
             }

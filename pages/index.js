@@ -51,11 +51,11 @@ export default class extends Component {
             //判断是否有带好友openid参数
             var Fopenid = getQueryString('Fopenid')
             if(Fopenid){
-                //var oAtuhUrl = "https://guerlain.wechat.wcampaign.cn/oauth?redirecturl=" + btoa("http://localhost:3000/?Fopenid="+Fopenid);
+                // var oAtuhUrl = "https://guerlain.wechat.wcampaign.cn/oauth?redirecturl=" + btoa("http://localhost:3000/?Fopenid="+Fopenid);
                 var oAtuhUrl = "https://guerlain.wechat.wcampaign.cn/oauth?redirecturl=" + btoa("http://guerlain.wcampaign.cn?Fopenid="+Fopenid);
                 window.location.href = oAtuhUrl;
             }else {
-                //var oAtuhUrl = "https://guerlain.wechat.wcampaign.cn/oauth?redirecturl=" + btoa("http://localhost:3000/")
+                // var oAtuhUrl = "https://guerlain.wechat.wcampaign.cn/oauth?redirecturl=" + btoa("http://localhost:3000/")
                 var oAtuhUrl = "https://guerlain.wechat.wcampaign.cn/oauth?redirecturl=" + btoa("http://guerlain.wcampaign.cn")
                 window.location.href = oAtuhUrl;
             }
@@ -109,13 +109,18 @@ export default class extends Component {
                     $(".rankList").html("");
                     var liveScore = sessionStorage.getItem('liveScore');
                     if(liveScore){
-                        $(".myScore").html('我的当前分数：' + liveScore);
+                        $(".myScore .listScore").html(liveScore);
                     }else{
-                        $(".myScore").html('我的当前分数：0');
+                        $(".myScore .listScore").html(0);
                     }
                     
                     for(var i=0;i<data.length;i++){
-                        var oDov = $("<p><span class='listName'>"+data[i].nickname+":</span><span class='listScore'>"+data[i].score+"</span></p>")
+                        
+                        if(i%2 === 0){
+                            var oDov = $("<p class='scoreBg'><span class='listName'>"+data[i].nickname+"</span><span class='listScore'>"+data[i].score+"</span></p>")
+                        }else{
+                            var oDov = $("<p><span class='listName'>"+data[i].nickname+"</span><span class='listScore'>"+data[i].score+"</span></p>")
+                        }
                         $(".rankList").append(oDov);
                     }
                 }
@@ -146,10 +151,9 @@ export default class extends Component {
                 data:{openid:userData.original.openid},
                 dataType: "json",
                 success:function (data) {
-                    console.log(data);
                     $(".frendScore").html("");
                     for(var i=0;i<data.length;i++){
-                        var oDov = $("<p><span class='listName'>"+data[i].nickname+":</span><span class='listScore'>"+data[i].score+"</span></p>")
+                        var oDov = $("<p><span class='listName'>"+data[i].nickname+"</span><span class='listScore'>"+data[i].score+"</span></p>")
                         $(".frendScore").append(oDov);
                     }
                 }
@@ -163,6 +167,36 @@ export default class extends Component {
             $(".rankBox").fadeOut(500);
         })
 
+        //微信share
+        var data = {};
+        data.pageurl = window.location.href;
+        $.ajaxSettings.async = true;
+        $.getJSON("https://guerlain.wechat.wcampaign.cn/jssdk", data, function(data){
+            wx.config(data);
+        });
+
+        //微信分享,接受参数传值
+        wx.ready(function () {
+            wx.onMenuShareTimeline({
+                title: '嗡嗡嗡，暴露眼力和手速的帝皇蜂大作战来一局？', // 分享标题
+                link: "http://guerlain.wcampaign.cn/?Fopenid=" + userData.original.openid, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: 'http://guerlain.wcampaign.cn/static/share-icon.jpg', // 分享图标
+                success: function () {
+                    
+                }
+            });
+            wx.onMenuShareAppMessage({
+                title: '嗡嗡嗡，暴露眼力和手速的帝皇蜂大作战来一局？', // 分享标题
+                desc: '圣诞季我们一起去浦东机场玩同款游戏赢取娇兰190周年庆惊喜好礼！', // 分享描述
+                link: "http://guerlain.wcampaign.cn/?Fopenid=" + userData.original.openid, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: 'http://guerlain.wcampaign.cn/static/share-icon.jpg', // 分享图标
+                type: '', // 分享类型,music、video或link，不填默认为link
+                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                success: function () {
+                    
+                }
+            });
+        });
         // const publickey = '-----BEGIN PUBLIC KEY-----MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC6KzAVhTxDl/6EUTtCbtRFOPKA4/WOD9WOSP+vxIa7+wjHnNXtWWf2JuzlTapHrx++J8K9zn75tGibXHsZb/DHvp4Pl50Ln2w1VhYuwg2MAUuf/Q2c8dIhM8srRmPGqEn621GTK0cNGweyLR1y88epLSt6MnbQAY89vGVd/LR5TwIDAQAB-----END PUBLIC KEY-----';
 
         // const key = new NodeRSA({b: 512});
@@ -194,6 +228,7 @@ export default class extends Component {
                     <link rel="manifest" href="/manifest.json" />
                     <link rel="preload" href="/static/fonts/Montserrat-Light.ttf" as="font" />
                     <link rel="preload" href="/static/fonts/Montserrat-Thin.ttf" as="font" />
+                    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
                 </Head>
                 <canvas
                     ref={c => this.canvas = c}
@@ -205,9 +240,13 @@ export default class extends Component {
                 <div className='mask'></div>
                 <div className='rankBox'>
                     <img className='off' src='/static/assets/off.png'  />
-                    <p className='rankTitle'>排行榜</p>
-                    <p className='rankExplain'>排行榜说明排行榜说明排行榜说明排行榜说明排行榜说明排行榜说明</p>
-                    <p className='myScore'>我的得分：10000</p>
+                    <p className='rankTitle'>
+                    <img className='phb' src='/static/assets/phb.png' alt='' />
+                    </p>
+                    <p className='rankExplain'></p>
+                    <p className='myScore'>
+                    <span className='listName'>我的分数</span><span className='listScore'></span>
+                    </p>
                     <div className='rankList'>
                         
                     </div>
@@ -218,6 +257,7 @@ export default class extends Component {
                     <div className='rule'></div>
                 </div>
                 <div className='palyAgainBox'>
+                    <span className='listName'>我的分数:</span><span id='myScore' className='listScore'></span>
                     <div className='frendScore'>
                         
                     </div>
@@ -255,6 +295,9 @@ export default class extends Component {
                             z-index: 1000;
                             display:none;
                         }
+                        .phb{
+                            width:25%;
+                        }
                         .beeBox{
                             position: absolute;
                             width: 80%;
@@ -271,9 +314,15 @@ export default class extends Component {
                             height:100vw;
                             position: absolute;
                             left: 10%;
-                            top: 32%;
+                            top: 26%;
                             // border: 1px solid white;
                             display:none;
+                        }
+                        .palyAgainBox>.listName,.palyAgainBox>.listScore{
+                            color=#eee2b2;
+                        }
+                        .scoreBg{
+                            background-color: #342d23;
                         }
                         .frendScore{
                             width: 100%;
@@ -282,6 +331,7 @@ export default class extends Component {
                             overflow-y: auto;
                             color: white;
                             text-align: center;
+                            margin-top: 2%;
                         }
                         .playAgainBg{
                             width: 100%;
@@ -338,12 +388,12 @@ export default class extends Component {
                             display: none;
                         }
                         .rankList{
-                            width:90%;
+                            width:100%;
                             height: 80%;
                             overflow: auto;
                         }
                         .rankList p{
-                            margin-top: 5%;
+                            margin-top: 2%;
                             color: #edb97b;
                             width: 100%;
                             text-align: center;
@@ -352,19 +402,25 @@ export default class extends Component {
                         }
                         .listName{
                             display: inline-block;
-                            width: 50%;
+                            width: 45%;
                             text-align: right;
+                            color:#eab883;
+                            font-size: 0.8em;
+                            letter-spacing:2px;
                         }
                         .listScore{
+                            margin-left:5%;
                             display: inline-block;
                             width: 50%;
                             text-align: left;
+                            color:#eab883;
+                            font-size: 0.8em;
+                            letter-spacing:4px;
                         }
                         .myScore{
                             color:#edb97b;
                             width: 100%;
-                            text-align: center;
-                            font-size: 16px;
+                            text-align: center; 
                         }
                         .rankBox{
                             width: 80%;
@@ -376,9 +432,12 @@ export default class extends Component {
                             display:none;
                         }
                         .rankTitle{
-                            color: #fbe0b2;
+                            //color: #fbe0b2;
                             width: 100%;
                             text-align: center;
+                            //font-size:20px;
+                            //text-decoration:underline;
+                            padding-bottom: 10px;
                         }
                         .rankExplain{
                             color:#edb97b;
