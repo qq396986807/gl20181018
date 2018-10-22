@@ -269,11 +269,13 @@ export default class extends Component {
                 </div>
                 <style jsx global>
                     {`
+                        *{-webkit-user-select: none; user-select: none;}
                         html, body {
                             height: 100vh;
                             margin: 0;
                             overflow: hidden;
                             background-color: black;
+                            font-family: "SF Pro SC","SF Pro Text","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
                         }
                         p{
                             margin: 0;
@@ -281,10 +283,10 @@ export default class extends Component {
                         }
                         .off{
                             position: absolute;
-                            right: -10%;
+                            right: -5.5%;
                             top: 0;
                             width: 13%;
-                            margin-top: -18%;
+                            margin-top: -12%;
                         }
                         .share,.ruleShow{
                             width: 100%;
@@ -315,7 +317,6 @@ export default class extends Component {
                             position: absolute;
                             left: 10%;
                             top: 26%;
-                            // border: 1px solid white;
                             display:none;
                         }
                         .palyAgainBox>.listName,.palyAgainBox>.listScore{
@@ -344,12 +345,10 @@ export default class extends Component {
                         .playAgainBg div{
                             margin-left: 15%;
                             width: 70%;
-                            // border: 1px solid white;
                         }
                         .beeBox div{
                             margin-left: 10%;
                             width: 80%;
-                            // border: 1px solid white;
                         }
                         .play{
                             margin-top: 81%;
@@ -393,50 +392,54 @@ export default class extends Component {
                             overflow: auto;
                         }
                         .rankList p{
-                            margin-top: 2%;
+                            
                             color: #edb97b;
                             width: 100%;
                             text-align: center;
                             font-size: 16px;
-                            padding: 5px 0;
+                            padding: 3px 0;
+                            display: flex;
+                            opacity: .8;
                         }
                         .listName{
                             display: inline-block;
-                            width: 45%;
+                            width: 48%;
                             text-align: right;
                             color:#eab883;
                             font-size: 0.8em;
                             letter-spacing:2px;
+                            height: 27px;
+                            line-height: 27px;
                         }
                         .listScore{
-                            margin-left:5%;
+                            margin-left:4%;
                             display: inline-block;
-                            width: 50%;
+                            width: 48%;
                             text-align: left;
                             color:#eab883;
-                            font-size: 0.8em;
+                            font-size: 1.2em;
                             letter-spacing:4px;
+                            height: 27px;
+                            line-height: 27px;
                         }
                         .myScore{
                             color:#edb97b;
                             width: 100%;
                             text-align: center; 
+                            padding: 3px 0;
                         }
                         .rankBox{
-                            width: 80%;
+                            width: 90%;
                             height: 80%;
                             position: absolute;
                             z-index: 10001;
-                            left: 10%;
-                            top:10%;
+                            left: 5%;
+                            top: 6%;
                             display:none;
                         }
                         .rankTitle{
-                            //color: #fbe0b2;
                             width: 100%;
                             text-align: center;
-                            //font-size:20px;
-                            //text-decoration:underline;
                             padding-bottom: 10px;
                         }
                         .rankExplain{
