@@ -97,7 +97,7 @@ export default class Boot {
         // drawImage(
         //     0,
         //     0,
-        //     'static/assets/bg.png',
+        //     'https://glcdn.wcampaign.cn/assets/bg.png',
 		// 	canvas.width,
 		// 	canvas.height
         // )
@@ -141,21 +141,21 @@ export default class Boot {
                 drawImage(
                     0,
                     0,
-                    'static/assets/bg.png',
+                    'https://glcdn.wcampaign.cn/assets/bg.png',
                     canvas.width,
                     canvas.height
                 )
-                
-                $(".beeBox").fadeIn(1000,function(){
-                    //绘制首页头顶
+
+                //绘制首页头顶
                 drawImage(
                     0,
                     0,
-                    'static/assets/p1-t1.png',
+                    'https://glcdn.wcampaign.cn/assets/p1-t1.png',
                     canvas.width,
                     canvas.width / 1.953
                 )
-                });
+                
+                $(".beeBox").show();
             }else{
                 drawAni();
             }

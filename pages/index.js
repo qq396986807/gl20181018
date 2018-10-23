@@ -76,7 +76,7 @@ export default class extends Component {
                     headimgurl:userData.original.headimgurl
                 },
                 success:function (data) {
-                    console.log(data);
+                    ////console.log(data);
                 }
             })
         }else{
@@ -86,8 +86,9 @@ export default class extends Component {
         }
 
     }
+
         ouathinit();
-        console.log(userData);
+        ////console.log(userData);
         
 
 
@@ -105,7 +106,7 @@ export default class extends Component {
                 type:'POST',
                 dataType: "json",
                 success:function (data) {
-                    console.log(data);
+                    //console.log(data);
                     $(".rankList").html("");
                     var liveScore = sessionStorage.getItem('liveScore');
                     if(liveScore){
@@ -153,7 +154,7 @@ export default class extends Component {
                 success:function (data) {
                     $(".frendScore").html("");
                     for(var i=0;i<data.length;i++){
-                        var oDov = $("<p><span class='listName'>"+data[i].nickname+"</span><span class='listScore'>"+data[i].score+"</span></p>")
+                        var oDov = $("<p class='again-friend-w'><span class='listName'>"+data[i].nickname+"</span><span class='listScore'>"+data[i].score+"</span></p>")
                         $(".frendScore").append(oDov);
                     }
                 }
@@ -204,17 +205,17 @@ export default class extends Component {
 
         // //var pubKey = new NodeRSA(publickey,'pkcs8-public');//导入公钥
         // var encrypted = key.encrypt('hithere', 'base64'); //使用公钥加密字符串
-        // console.log('========encrypted: ', encrypted);
+        // //console.log('========encrypted: ', encrypted);
  
         // const privatekey = '-----BEGIN RSA PRIVATE KEY-----MIICXQIBAAKBgQC6KzAVhTxDl/6EUTtCbtRFOPKA4/WOD9WOSP+vxIa7+wjHnNXtWWf2JuzlTapHrx++J8K9zn75tGibXHsZb/DHvp4Pl50Ln2w1VhYuwg2MAUuf/Q2c8dIhM8srRmPGqEn621GTK0cNGweyLR1y88epLSt6MnbQAY89vGVd/LR5TwIDAQABAoGAWD1WKi0flk45pc+2zdMoK7NFRhBGeFJK/4jcIBx/XCQtUielQj2pSAPFLx5zwkxgOEoyRLLWflajalgYRMNJFSSZA9tCPmIID32OYmVm+ChCt5sTxvrugzDvA8zVz/p97Kbz1/8BezTa4fWOfvrmPH0JrOkVcTJYpu5WlDVcf9ECQQDnVVlKccb/a8us71FIVCZo6gBnwBf9sVeEj2WVIQdrzIYVQfVMguTiDSL0GT6FonL84XTNM8kJOYpwG9mq9GCXAkEAzgT9Tm3aRMAG+33pCjED05za1OwwXf3xSeFNH4p9PMEsga/cew8RpZcfC+qLj/t/yiDhf5TpHytJzQ20g9oMCQJAMYNAAEIH8KVWy6XRROTV78Cd45bmy6LIc5PpjxipqPX2gNhEM2MUsBlVsN8yVZHmgJ+Uy1LZJYNOUR504TU68wJBAIUxUJreBpkgFOOO+ZTvL2wmIow5zuNVhCOhl3zmyiT3NtD5Y2/jxCLsWtQXZPdHP8zsCR20pirSj7oUPDpqRBECQQCANhG5Oo8eP0CU0Ruik7GmA6RuLbryEtCc3urf1VEp/ebhi8ynGyC8FNxwUe+kqYwJHNvkU8WqkxhSoPsU4+WO-----END RSA PRIVATE KEY-----';
         // const key2 = new NodeRSA({b: 512});
         // key2.importKey(privatekey, 'pkcs1-private');
 
         // var decrypted = key2.decrypt(encrypted, 'base64');
-        // console.log('========decrypted: ', decrypted);       
+        // //console.log('========decrypted: ', decrypted);       
         // //var flag = key.verify('hithere', encrypted);
 
-        // //console.log('========verify: ', flag==true? "success": "fail");
+        // ////console.log('========verify: ', flag==true? "success": "fail");
     }
 
     render() {
@@ -226,8 +227,6 @@ export default class extends Component {
                     <meta name="apple-mobile-web-app-capable" content="yes" />
                     <meta name="mobile-web-app-capable" content="yes" />
                     <link rel="manifest" href="/manifest.json" />
-                    <link rel="preload" href="/static/fonts/Montserrat-Light.ttf" as="font" />
-                    <link rel="preload" href="/static/fonts/Montserrat-Thin.ttf" as="font" />
                     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
                 </Head>
                 <canvas
@@ -235,13 +234,13 @@ export default class extends Component {
                     height="450"
                     width="600"
                 />
-                <img className='share' src='/static/assets/share.png' alt='' />
-                <img className='ruleShow' src='/static/assets/rule.png' alt='' />
+                <img className='share' src='https://glcdn.wcampaign.cn/assets/share.png' alt='' />
+                <img className='ruleShow' src='https://glcdn.wcampaign.cn/assets/rule.png' alt='' />
                 <div className='mask'></div>
                 <div className='rankBox'>
-                    <img className='off' src='/static/assets/off.png'  />
+                    <img className='off' src='https://glcdn.wcampaign.cn/assets/off.png'  />
                     <p className='rankTitle'>
-                    <img className='phb' src='/static/assets/phb.png' alt='' />
+                    <img className='phb' src='https://glcdn.wcampaign.cn/assets/phb.png' alt='' />
                     </p>
                     <p className='rankExplain'></p>
                     <p className='myScore'>
@@ -257,7 +256,7 @@ export default class extends Component {
                     <div className='rule'></div>
                 </div>
                 <div className='palyAgainBox'>
-                    <span className='listName'>我的分数:</span><span id='myScore' className='listScore'></span>
+                    <div className='again-myscore-w'><span className='listName again-myscore-t'>我的分数</span><span id='myScore' className='listScore  again-myscore'></span></div>
                     <div className='frendScore'>
                         
                     </div>
@@ -269,11 +268,13 @@ export default class extends Component {
                 </div>
                 <style jsx global>
                     {`
+                        *{-webkit-user-select: none; user-select: none;}
                         html, body {
                             height: 100vh;
                             margin: 0;
                             overflow: hidden;
                             background-color: black;
+                            font-family: "SF Pro SC","SF Pro Text","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
                         }
                         p{
                             margin: 0;
@@ -281,10 +282,10 @@ export default class extends Component {
                         }
                         .off{
                             position: absolute;
-                            right: -10%;
+                            right: -5.5%;
                             top: 0;
                             width: 13%;
-                            margin-top: -18%;
+                            margin-top: -12%;
                         }
                         .share,.ruleShow{
                             width: 100%;
@@ -296,7 +297,7 @@ export default class extends Component {
                             display:none;
                         }
                         .phb{
-                            width:25%;
+                            width:31%;
                         }
                         .beeBox{
                             position: absolute;
@@ -304,7 +305,7 @@ export default class extends Component {
                             height: 99.75vw;
                             left: 10%;
                             top:19%;
-                            background-image: url(/static/assets/p1-t2.png);
+                            background-image: url(https://glcdn.wcampaign.cn/assets/p1-t2.png);
                             background-repeat: no-repeat;
                             background-size: 100% auto;
                             display:none;
@@ -315,7 +316,6 @@ export default class extends Component {
                             position: absolute;
                             left: 10%;
                             top: 26%;
-                            // border: 1px solid white;
                             display:none;
                         }
                         .palyAgainBox>.listName,.palyAgainBox>.listScore{
@@ -337,19 +337,17 @@ export default class extends Component {
                             width: 100%;
                             height: 44.42vw;
                             position: absolute;
-                            background-image: url(/static/assets/playAgain.png);
+                            background-image: url(https://glcdn.wcampaign.cn/assets/playAgain.png);
                             background-repeat: no-repeat;
                             background-size: 100% auto;
                         }
                         .playAgainBg div{
                             margin-left: 15%;
                             width: 70%;
-                            // border: 1px solid white;
                         }
                         .beeBox div{
                             margin-left: 10%;
                             width: 80%;
-                            // border: 1px solid white;
                         }
                         .play{
                             margin-top: 81%;
@@ -382,7 +380,7 @@ export default class extends Component {
                             left: 0;
                             top: 0;
                             z-index: 100;
-                            background-image: url(/static/assets/bg.png);
+                            background-image: url(https://glcdn.wcampaign.cn/assets/bg.png);
                             background-repeat: no-repeat;
                             background-size: 100% 100%;
                             display: none;
@@ -393,50 +391,54 @@ export default class extends Component {
                             overflow: auto;
                         }
                         .rankList p{
-                            margin-top: 2%;
+                            
                             color: #edb97b;
                             width: 100%;
                             text-align: center;
                             font-size: 16px;
-                            padding: 5px 0;
+                            padding: 3px 0;
+                            display: flex;
+                            opacity: .8;
                         }
                         .listName{
                             display: inline-block;
-                            width: 45%;
+                            width: 48%;
                             text-align: right;
                             color:#eab883;
                             font-size: 0.8em;
                             letter-spacing:2px;
+                            height: 27px;
+                            line-height: 27px;
                         }
                         .listScore{
-                            margin-left:5%;
+                            margin-left:4%;
                             display: inline-block;
-                            width: 50%;
+                            width: 48%;
                             text-align: left;
                             color:#eab883;
-                            font-size: 0.8em;
+                            font-size: 1.2em;
                             letter-spacing:4px;
+                            height: 27px;
+                            line-height: 27px;
                         }
                         .myScore{
                             color:#edb97b;
                             width: 100%;
                             text-align: center; 
+                            padding: 3px 0;
                         }
                         .rankBox{
-                            width: 80%;
+                            width: 90%;
                             height: 80%;
                             position: absolute;
                             z-index: 10001;
-                            left: 10%;
-                            top:10%;
+                            left: 5%;
+                            top: 6%;
                             display:none;
                         }
                         .rankTitle{
-                            //color: #fbe0b2;
                             width: 100%;
                             text-align: center;
-                            //font-size:20px;
-                            //text-decoration:underline;
                             padding-bottom: 10px;
                         }
                         .rankExplain{
@@ -449,6 +451,21 @@ export default class extends Component {
                             height: 100vh;
                         }
 
+                        .again-myscore-t{
+                            color: #fddfaf;
+                        }
+
+                        .again-myscore{
+                            color: #fddfaf;
+                        }
+
+                        .again-myscore-w{
+                            display: flex;
+                        }
+
+                        .again-friend-w{
+                            display: flex;
+                        }
                         @font-face {
                             font-family: "Montserrat-Regular";
                             src: url("/static/fonts/Montserrat-Regular.ttf") format("truetype")
