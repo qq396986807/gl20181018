@@ -88,7 +88,7 @@ export default class extends Component {
     }
 
         ouathinit();
-        ////console.log(userData);
+        //console.log(userData);
         
 
 
@@ -106,15 +106,7 @@ export default class extends Component {
                 type:'POST',
                 dataType: "json",
                 success:function (data) {
-                    //console.log(data);
                     $(".rankList").html("");
-                    var liveScore = sessionStorage.getItem('liveScore');
-                    if(liveScore){
-                        $(".myScore .listScore").html(liveScore);
-                    }else{
-                        $(".myScore .listScore").html(0);
-                    }
-                    
                     for(var i=0;i<data.length;i++){
                         
                         if(i%2 === 0){
@@ -124,6 +116,15 @@ export default class extends Component {
                         }
                         $(".rankList").append(oDov);
                     }
+                }
+            })
+            $.ajax({
+                url:'https://guerlain.wechat.wcampaign.cn/user/getsingle',
+                type:'POST',
+                data:{openid:userData.original.openid},
+                dataType: "json",
+                success:function (data) {   
+                    $(".myScore .listScore").html(data[0].score);
                 }
             })
         })
