@@ -56,7 +56,7 @@ export default class Play {
 		drawImage(
             0,
             0,
-            'static/assets/bg.png',
+            'https://glcdn.wcampaign.cn/assets/bg.png',
 			canvas.width,
 			canvas.height
 		)
@@ -69,7 +69,7 @@ export default class Play {
 
 			if(block.value > 0) {
 				// drawBlock(block.x, block.y, block.size, block.color)
-				drawImage(block.x,block.y,'static/assets/fk1.png', block.size, block.size)
+				drawImage(block.x,block.y,'https://glcdn.wcampaign.cn/assets/fk1.png', block.size, block.size)
 
 				drawText(
 					block.x + ((block.size / 2) - (block.value > 9 ? (10 * scale) : (6 * scale))),
@@ -98,13 +98,13 @@ export default class Play {
 			drawImage(
 				point.x,
 				point.y,
-				'static/assets/count.png',
+				'https://glcdn.wcampaign.cn/assets/count.png',
 				150,
 				150
 			)
 
 			drawText(
-				point.x + 150 * 0.4,
+				point.x + 160 * 0.4,
 				point.y + 150 * 0.6,
 				20 * scale,
 				'black',
@@ -118,7 +118,7 @@ export default class Play {
 				drawImage(
 					0,
 					0,
-					'static/assets/bg.png',
+					'https://glcdn.wcampaign.cn/assets/bg.png',
 					canvas.width,
 					canvas.height
 				)
@@ -127,7 +127,7 @@ export default class Play {
 				drawImage(
 					0,
 					0,
-					'static/assets/p2-t1.png',
+					'https://glcdn.wcampaign.cn/assets/p2-t1.png',
 					canvas.width,
 					canvas.width / 3.5714
 				)
@@ -171,16 +171,24 @@ export default class Play {
 						drawImage(
 							circle.x - 50,
 							circle.y - 50,
-							'static/assets/bee.png',
+							'https://glcdn.wcampaign.cn/assets/bee.png',
 							200,
 							200
 						)
+						drawImage(
+							circle.x + 43,
+							circle.y + 70,
+							'https://glcdn.wcampaign.cn/assets/ball.png',
+							20,
+							20
+						)
+						
 						bee++;
 					}else{
 						drawImage(
 							circle.x + 43,
 							circle.y + 70,
-							'static/assets/ball.png',
+							'https://glcdn.wcampaign.cn/assets/ball.png',
 							20,
 							20
 						)
@@ -192,23 +200,23 @@ export default class Play {
 				drawImage(
 					0,
 					0,
-					'static/assets/score.png',
+					'https://glcdn.wcampaign.cn/assets/score.png',
 					canvas.width,
 					canvas.width / 4.286
 				)
 
 				drawText(
 					halfCanvasWidth - (45 * scale),
-					17 * scale,
-					15 * scale,
+					22 * scale,
+					12 * scale,
 					'white',
 					'Montserrat-Regular',
 					'分数: '
 				)
 				drawText(
 					halfCanvasWidth - (5 * scale),
-					20 * scale,
-					25 * scale,
+					26 * scale,
+					26 * scale,
 					'white',
 					'Montserrat-Regular',
 					this.score * 10
@@ -437,7 +445,7 @@ export default class Play {
 				// 	drawImage(
 				// 		0,
 				// 		0,
-				// 		'static/assets/bg.png',
+				// 		'https://glcdn.wcampaign.cn/assets/bg.png',
 				// 		canvas.width,
 				// 		canvas.height
 				// 	)
@@ -465,18 +473,32 @@ export default class Play {
 					this.newBestScore = true
 					this.bestScore = this.score
 					var userData = localStorage.getItem('data');
-					userData = JSON.parse(userData);
-					$.ajax({
-						url:'https://guerlain.wechat.wcampaign.cn/user/update',
-						type:'POST',
-						data:{openid:userData.original.openid,currentscore:this.score * 10},
-						success:function (data) {
-							if(data == 1){
-								alert('您刷新了记录！')
-							}	
+
+					if(userData)
+					{
+						try{
+							userData = JSON.parse(userData);
+							$.ajax({
+								url:'https://guerlain.wechat.wcampaign.cn/user/update',
+								type:'POST',
+								data:{openid:userData.original.openid,currentscore:this.score * 10},
+								success:function (data) {
+									if(data == 1){
+										alert('您刷新了记录！')
+									}	
+								}
+							});
+
+							localStorage.setItem('bestScore', this.score * 10);
+						}catch(err)
+						{
+							console.log("play.js, handleBlockCollision(), convert userData to JSON object fail!");
 						}
-					})
-					localStorage.setItem('bestScore', this.score * 10)
+						
+					}else
+					{
+						console.log("play.js, handleBlockCollision(), userData is null!");
+					}
 				}
 
 				window.requestAnimationFrame(this.restartLabelAnimation)
