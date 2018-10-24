@@ -146,16 +146,18 @@ export default class Boot {
                     canvas.height
                 )
 
-                //绘制首页头顶
-                drawImage(
-                    0,
-                    0,
-                    'https://glcdn.wcampaign.cn/assets/p1-t1.png',
-                    canvas.width,
-                    canvas.width / 1.953
-                )
+              
                 
-                $(".beeBox").show();
+                $(".beeBox").show(function(){
+                    //绘制首页头顶
+                    drawImage(
+                        0,
+                        0,
+                        'https://glcdn.wcampaign.cn/assets/p1-t1.png',
+                        canvas.width,
+                        canvas.width / 1.953
+                    )
+                });
             }else{
                 drawAni();
             }
