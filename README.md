@@ -15,3 +15,13 @@ npm run dev
 ```bash
 npm run build && npm run start
 ```
+
+## Package
+```bash
+npm run export
+```
+
+## Deploy
+```bash
+sh deploy.sh
+```

@@ -120,15 +120,31 @@ export default class extends Component {
                         $(".rankList").append(scrollbar);
                 }
             })
-            $.ajax({
-                url:'https://guerlain.wechat.wcampaign.cn/user/getsingle',
-                type:'POST',
-                data:{openid:userData.original.openid},
-                dataType: "json",
-                success:function (data) {   
-                    $(".myScore .listScore").html(data[0].score);
+
+            if(userData)
+            {
+                try{
+                    $.ajax({
+                        url:'https://guerlain.wechat.wcampaign.cn/user/getsingle',
+                        type:'POST',
+                        data:{openid:userData.original.openid},
+                        dataType: "json",
+                        success:function (data) {   
+                            $(".myScore .listScore").html(data[0].score);
+                        }
+                    })
+
+                }catch(err)
+                {
+                    console.log("index.js, ajax getsingle, userData is null!");
                 }
-            })
+                
+            }else
+            {
+                console.log("index.js, ajax getsingle, userData is null!");
+            }
+
+            
         })
 
         //点击分享，弹出浮层
@@ -247,7 +263,7 @@ export default class extends Component {
                     </p>
                     <p className='rankExplain'></p>
                     <p className='myScore'>
-                    <span className='listName'>我的分数</span><span className='listScore'></span>
+                    <span className='listName'>我的分数</span><span className='listScore'>500</span>
                     </p>
                     <div className='rankList'>
                         
@@ -318,7 +334,7 @@ export default class extends Component {
                             height:100vw;
                             position: absolute;
                             left: 10%;
-                            top: 26%;
+                            top: 20%;
                             display:none;
                         }
                         .palyAgainBox>.listName,.palyAgainBox>.listScore{
@@ -329,7 +345,7 @@ export default class extends Component {
                         }
                         .frendScore{
                             width: 100%;
-                            height: 17vw;
+                            height: 28vw;
                             position: relative;
                             overflow-y: auto;
                             color: white;
@@ -401,19 +417,14 @@ export default class extends Component {
                         .rankList::-webkit-scrollbar-thumb {
                             background-color: #fedaa5;
                             border-radius: 10px;
-                            //-webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,.1);
+                          
                         }
-                        // .rankList::-webkit-scrollbar-track {/*滚动条里面轨道*/
-                        //     //-webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.2);
-                        //     border-radius: 10px;
-                        //     background: #ffcd76;
-                        //     width:1px;
-                        // }
+    
                         .scrolLine{
                             position: absolute;
                             width: 2px;
                             height: 75%;
-                            right: 0.11em;
+                            right: 0.15em;
                             top: 26%;
                             border-right: 1px solid #ffcd76;
                             z-index: -1;
@@ -454,6 +465,7 @@ export default class extends Component {
                             width: 100%;
                             text-align: center; 
                             padding: 3px 0;
+                            display: flex;
                         }
                         .rankBox{
                             width: 90%;
