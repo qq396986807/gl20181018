@@ -148,7 +148,7 @@ export default class Boot {
 
               
                 
-                $(".beeBox").show(function(){
+                $(".beeBox").fadeIn(function(){
                     //绘制首页头顶
                     drawImage(
                         0,

@@ -116,6 +116,8 @@ export default class extends Component {
                         }
                         $(".rankList").append(oDov);
                     }
+                    var scrollbar = $("<div class='scrolLine'></div>")
+                        $(".rankList").append(scrollbar);
                 }
             })
             $.ajax({
@@ -388,8 +390,33 @@ export default class extends Component {
                         }
                         .rankList{
                             width:100%;
-                            height: 80%;
+                            height: 76%;
                             overflow: auto;
+                        }
+                        .rankList::-webkit-scrollbar {
+                            width: 0.4em;//表示垂直滚动条的宽度
+                            height: 1px;//表示水平滚动条的高度
+                        }
+                        /*正常情况下滑块的样式*/
+                        .rankList::-webkit-scrollbar-thumb {
+                            background-color: #fedaa5;
+                            border-radius: 10px;
+                            //-webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,.1);
+                        }
+                        // .rankList::-webkit-scrollbar-track {/*滚动条里面轨道*/
+                        //     //-webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.2);
+                        //     border-radius: 10px;
+                        //     background: #ffcd76;
+                        //     width:1px;
+                        // }
+                        .scrolLine{
+                            position: absolute;
+                            width: 2px;
+                            height: 75%;
+                            right: 0.11em;
+                            top: 26%;
+                            border-right: 1px solid #ffcd76;
+                            z-index: -1;
                         }
                         .rankList p{
                             
