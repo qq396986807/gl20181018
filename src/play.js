@@ -115,22 +115,22 @@ export default class Play {
 
 		if (this.end === true) {
 			// if(this.dieBeeFlag === true){
-				drawImage(
-					0,
-					0,
-					'https://glcdn.wcampaign.cn/assets/bg.png',
-					canvas.width,
-					canvas.height
-				)
+				// drawImage(
+				// 	0,
+				// 	0,
+				// 	'https://glcdn.wcampaign.cn/assets/bg.png',
+				// 	canvas.width,
+				// 	canvas.height
+				// )
 	
 				//绘制头部
-				drawImage(
-					0,
-					0,
-					'https://glcdn.wcampaign.cn/assets/p2-t1.png',
-					canvas.width,
-					canvas.width / 3.5714
-				)
+				// drawImage(
+				// 	0,
+				// 	0,
+				// 	'https://glcdn.wcampaign.cn/assets/p2-t1.png',
+				// 	canvas.width,
+				// 	canvas.width / 3.5714
+				// )
 	
 				//绘制分数
 				// drawText(
@@ -141,9 +141,9 @@ export default class Play {
 				// 	'Montserrat-Regular',
 				// 	'MY LEVEL ' + this.score * 10 
 				// 	)
-					$("#myScore").html(this.score * 10)
-					sessionStorage.setItem('liveScore',this.score * 10);
-					$(".palyAgainBox").fadeIn(500);
+					// $("#myScore").html(this.score * 10)
+					// sessionStorage.setItem('liveScore',this.score * 10);
+					// $(".palyAgainBox").fadeIn(500);
 			// }
 		} else {
 			// if(this.dieBeeFlag2){
@@ -452,30 +452,59 @@ export default class Play {
 				window.cancelAnimationFrame(this.play_animation)
 
 				//绘制蜜蜂死亡
-				// this.dieBeeFlag2 = false;
-				// var n = 0;//帧数
-				// function drawAni(){
-				// 	drawImage(
-				// 		0,
-				// 		0,
-				// 		'https://glcdn.wcampaign.cn/assets/bg.png',
-				// 		canvas.width,
-				// 		canvas.height
-				// 	)
-				// 	n++;
-				// }
+				this.dieBeeFlag2 = false;
+				var n = 0;//帧数
+				function drawAni(){
+					drawImage(
+						0,
+						0,
+						'https://glcdn.wcampaign.cn/assets/bg.png',
+						canvas.width,
+						canvas.height
+					)
+					drawImage(
+						canvas.width / 2 - 250,
+						canvas.height / 2 - 250,
+						beeDiePageAssetsPath[n],
+						500,
+						500
+					)
+					n++;
+				}
 
-				// var ani = setInterval(function(){
-				// 	if(n>23){
-				// 		this.dieBeeFlag = true;
-				// 		clearInterval(ani);
-				// 	}else{
-				// 		drawAni();
-				// 		console.log(n);
-				// 		console.log(beeDiePageAssetsPath[n]);
-				// 	}
+				var ani = setInterval(function(){
+					if(n>23){
+						drawImage(
+							0,
+							0,
+							'https://glcdn.wcampaign.cn/assets/bg.png',
+							canvas.width,
+							canvas.height
+						)
+			
+						//绘制头部
+						drawImage(
+							0,
+							0,
+							'https://glcdn.wcampaign.cn/assets/p2-t1.png',
+							canvas.width,
+							canvas.width / 3.5714
+						)
+							$("#myScore").html(this.score * 10)
+							sessionStorage.setItem('liveScore',this.score * 10);
+							$(".palyAgainBox").fadeIn(500);
+						clearInterval(ani);
+					}else{
+						drawAni();
+						// console.log(n);
+						// console.log(beeDiePageAssetsPath[n]);
+					}
 					
-				// }.bind(this),1000/20)
+				}.bind(this),100)
+				canvas.removeEventListener("touchmove", this.onTouch);
+				this.restart = true
+				document.removeEventListener("visibilitychange", this.onTabFocusOff)
+				return this.showStartScreen(this.run.bind(this));
 
 				
 				//结束
