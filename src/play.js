@@ -56,7 +56,7 @@ export default class Play {
 		drawImage(
             0,
             0,
-            'https://glcdn.wcampaign.cn/assets/bg.png',
+            'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/bg.png',
 			canvas.width,
 			canvas.height
 		)
@@ -98,7 +98,7 @@ export default class Play {
 			drawImage(
 				point.x,
 				point.y,
-				'https://glcdn.wcampaign.cn/assets/count.png',
+				'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/count.png',
 				150,
 				150
 			)
@@ -118,7 +118,7 @@ export default class Play {
 				// drawImage(
 				// 	0,
 				// 	0,
-				// 	'https://glcdn.wcampaign.cn/assets/bg.png',
+				// 	'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/bg.png',
 				// 	canvas.width,
 				// 	canvas.height
 				// )
@@ -127,7 +127,7 @@ export default class Play {
 				// drawImage(
 				// 	0,
 				// 	0,
-				// 	'https://glcdn.wcampaign.cn/assets/p2-t1.png',
+				// 	'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/p2-t1.png',
 				// 	canvas.width,
 				// 	canvas.width / 3.5714
 				// )
@@ -171,14 +171,14 @@ export default class Play {
 						drawImage(
 							circle.x - 50,
 							circle.y - 50,
-							'https://glcdn.wcampaign.cn/assets/bee.png',
+							'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/bee.png',
 							200,
 							200
 						)
 						drawImage(
 							circle.x + 43,
 							circle.y + 70,
-							'https://glcdn.wcampaign.cn/assets/ball.png',
+							'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/ball.png',
 							20,
 							20
 						)
@@ -188,7 +188,7 @@ export default class Play {
 						drawImage(
 							circle.x + 43,
 							circle.y + 70,
-							'https://glcdn.wcampaign.cn/assets/ball.png',
+							'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/ball.png',
 							20,
 							20
 						)
@@ -200,7 +200,7 @@ export default class Play {
 				drawImage(
 					0,
 					0,
-					'https://glcdn.wcampaign.cn/assets/score.png',
+					'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/score.png',
 					canvas.width,
 					canvas.width / 4.286
 				)
@@ -248,13 +248,13 @@ export default class Play {
 		// }
 		if(blockValue>9){
 			let arr = [
-			'https://glcdn.wcampaign.cn/assets/fk2.png',
+			'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/fk2.png',
 			'white'
 			]
 			return arr;
 		}else{
 			let arr = [
-				'https://glcdn.wcampaign.cn/assets/fk1.png',
+				'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/fk1.png',
 				'black'
 				]
 				return arr;
@@ -458,7 +458,7 @@ export default class Play {
 					drawImage(
 						0,
 						0,
-						'https://glcdn.wcampaign.cn/assets/bg.png',
+						'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/bg.png',
 						canvas.width,
 						canvas.height
 					)
@@ -477,7 +477,7 @@ export default class Play {
 						drawImage(
 							0,
 							0,
-							'https://glcdn.wcampaign.cn/assets/bg.png',
+							'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/bg.png',
 							canvas.width,
 							canvas.height
 						)
@@ -486,7 +486,7 @@ export default class Play {
 						drawImage(
 							0,
 							0,
-							'https://glcdn.wcampaign.cn/assets/p2-t1.png',
+							'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/p2-t1.png',
 							canvas.width,
 							canvas.width / 3.5714
 						)

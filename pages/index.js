@@ -253,13 +253,13 @@ export default class extends Component {
                     height="450"
                     width="600"
                 />
-                <img className='share' src='https://glcdn.wcampaign.cn/assets/share.png' alt='' />
-                <img className='ruleShow' src='https://glcdn.wcampaign.cn/assets/rule.png' alt='' />
+                <img className='share' src='https://cdn.wcampaign.cn/20181019gl/h5/static/assets/share.png' alt='' />
+                <img className='ruleShow' src='https://cdn.wcampaign.cn/20181019gl/h5/static/assets/rule.png' alt='' />
                 <div className='mask'></div>
                 <div className='rankBox'>
-                    <img className='off' src='https://glcdn.wcampaign.cn/assets/off.png'  />
+                    <img className='off' src='https://cdn.wcampaign.cn/20181019gl/h5/static/assets/off.png'  />
                     <p className='rankTitle'>
-                    <img className='phb' src='https://glcdn.wcampaign.cn/assets/phb.png' alt='' />
+                    <img className='phb' src='https://cdn.wcampaign.cn/20181019gl/h5/static/assets/phb.png' alt='' />
                     </p>
                     <p className='rankExplain'></p>
                     <p className='myScore'>
@@ -324,7 +324,7 @@ export default class extends Component {
                             height: 99.75vw;
                             left: 10%;
                             top:19%;
-                            background-image: url(https://glcdn.wcampaign.cn/assets/p1-t2.png);
+                            background-image: url(https://cdn.wcampaign.cn/20181019gl/h5/static/assets/p1-t2.png);
                             background-repeat: no-repeat;
                             background-size: 100% auto;
                             display:none;
@@ -356,7 +356,7 @@ export default class extends Component {
                             width: 100%;
                             height: 44.42vw;
                             position: absolute;
-                            background-image: url(https://glcdn.wcampaign.cn/assets/playAgain.png);
+                            background-image: url(https://cdn.wcampaign.cn/20181019gl/h5/static/assets/playAgain.png);
                             background-repeat: no-repeat;
                             background-size: 100% auto;
                         }
@@ -399,7 +399,7 @@ export default class extends Component {
                             left: 0;
                             top: 0;
                             z-index: 100;
-                            background-image: url(https://glcdn.wcampaign.cn/assets/bg.png);
+                            background-image: url(https://cdn.wcampaign.cn/20181019gl/h5/static/assets/bg.png);
                             background-repeat: no-repeat;
                             background-size: 100% 100%;
                             display: none;
