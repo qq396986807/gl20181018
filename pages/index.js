@@ -52,11 +52,11 @@ export default class extends Component {
             var Fopenid = getQueryString('Fopenid')
             if(Fopenid){
                 // var oAtuhUrl = "https://guerlain.wechat.wcampaign.cn/oauth?redirecturl=" + btoa("http://localhost:3000/?Fopenid="+Fopenid);
-                var oAtuhUrl = "https://guerlain.wechat.wcampaign.cn/oauth?redirecturl=" + btoa("http://guerlain.wcampaign.cn?Fopenid="+Fopenid);
+                var oAtuhUrl = "https://guerlain.wechat.wcampaign.cn/oauth?redirecturl=" + btoa("https://guerlain.wcampaign.cn?Fopenid="+Fopenid);
                 window.location.href = oAtuhUrl;
             }else {
                 // var oAtuhUrl = "https://guerlain.wechat.wcampaign.cn/oauth?redirecturl=" + btoa("http://localhost:3000/")
-                var oAtuhUrl = "https://guerlain.wechat.wcampaign.cn/oauth?redirecturl=" + btoa("http://guerlain.wcampaign.cn")
+                var oAtuhUrl = "https://guerlain.wechat.wcampaign.cn/oauth?redirecturl=" + btoa("https://guerlain.wcampaign.cn")
                 window.location.href = oAtuhUrl;
             }
         }
@@ -199,8 +199,8 @@ export default class extends Component {
         wx.ready(function () {
             wx.onMenuShareTimeline({
                 title: '嗡嗡嗡，暴露眼力和手速的帝皇蜂大作战来一局？', // 分享标题
-                link: "http://guerlain.wcampaign.cn/?Fopenid=" + userData.original.openid, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                imgUrl: 'http://guerlain.wcampaign.cn/static/share-icon.jpg', // 分享图标
+                link: "https://guerlain.wcampaign.cn/?Fopenid=" + userData.original.openid, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: 'https://guerlain.wcampaign.cn/static/share-icon.jpg', // 分享图标
                 success: function () {
                     
                 }
@@ -208,8 +208,8 @@ export default class extends Component {
             wx.onMenuShareAppMessage({
                 title: '嗡嗡嗡，暴露眼力和手速的帝皇蜂大作战来一局？', // 分享标题
                 desc: '圣诞季我们一起去浦东机场玩同款游戏赢取娇兰190周年庆惊喜好礼！', // 分享描述
-                link: "http://guerlain.wcampaign.cn/?Fopenid=" + userData.original.openid, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                imgUrl: 'http://guerlain.wcampaign.cn/static/share-icon.jpg', // 分享图标
+                link: "https://guerlain.wcampaign.cn/?Fopenid=" + userData.original.openid, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: 'https://guerlain.wcampaign.cn/static/share-icon.jpg', // 分享图标
                 type: '', // 分享类型,music、video或link，不填默认为link
                 dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                 success: function () {
@@ -246,7 +246,7 @@ export default class extends Component {
                     <meta name="apple-mobile-web-app-capable" content="yes" />
                     <meta name="mobile-web-app-capable" content="yes" />
                     <link rel="manifest" href="/manifest.json" />
-                    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+                    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
                 </Head>
                 <canvas
                     ref={c => this.canvas = c}
@@ -448,6 +448,7 @@ export default class extends Component {
                             letter-spacing:2px;
                             height: 27px;
                             line-height: 27px;
+                            overflow: hidden;
                         }
                         .listScore{
                             margin-left:4%;
