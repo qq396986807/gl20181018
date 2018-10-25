@@ -52,11 +52,11 @@ export default class extends Component {
             var Fopenid = getQueryString('Fopenid')
             if(Fopenid){
                 // var oAtuhUrl = "https://guerlain.wechat.wcampaign.cn/oauth?redirecturl=" + btoa("http://localhost:3000/?Fopenid="+Fopenid);
-                var oAtuhUrl = "https://guerlain.wechat.wcampaign.cn/oauth?redirecturl=" + btoa("http://guerlain.wcampaign.cn?Fopenid="+Fopenid);
+                var oAtuhUrl = "https://guerlain.wechat.wcampaign.cn/oauth?redirecturl=" + btoa("https://guerlain.wcampaign.cn?Fopenid="+Fopenid);
                 window.location.href = oAtuhUrl;
             }else {
                 // var oAtuhUrl = "https://guerlain.wechat.wcampaign.cn/oauth?redirecturl=" + btoa("http://localhost:3000/")
-                var oAtuhUrl = "https://guerlain.wechat.wcampaign.cn/oauth?redirecturl=" + btoa("http://guerlain.wcampaign.cn")
+                var oAtuhUrl = "https://guerlain.wechat.wcampaign.cn/oauth?redirecturl=" + btoa("https://guerlain.wcampaign.cn")
                 window.location.href = oAtuhUrl;
             }
         }
@@ -120,15 +120,31 @@ export default class extends Component {
                         $(".rankList").append(scrollbar);
                 }
             })
-            $.ajax({
-                url:'https://guerlain.wechat.wcampaign.cn/user/getsingle',
-                type:'POST',
-                data:{openid:userData.original.openid},
-                dataType: "json",
-                success:function (data) {   
-                    $(".myScore .listScore").html(data[0].score);
+
+            if(userData)
+            {
+                try{
+                    $.ajax({
+                        url:'https://guerlain.wechat.wcampaign.cn/user/getsingle',
+                        type:'POST',
+                        data:{openid:userData.original.openid},
+                        dataType: "json",
+                        success:function (data) {   
+                            $(".myScore .listScore").html(data[0].score);
+                        }
+                    })
+
+                }catch(err)
+                {
+                    console.log("index.js, ajax getsingle, userData is null!");
                 }
-            })
+                
+            }else
+            {
+                console.log("index.js, ajax getsingle, userData is null!");
+            }
+
+            
         })
 
         //点击分享，弹出浮层
@@ -183,8 +199,8 @@ export default class extends Component {
         wx.ready(function () {
             wx.onMenuShareTimeline({
                 title: '嗡嗡嗡，暴露眼力和手速的帝皇蜂大作战来一局？', // 分享标题
-                link: "http://guerlain.wcampaign.cn/?Fopenid=" + userData.original.openid, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                imgUrl: 'http://guerlain.wcampaign.cn/static/share-icon.jpg', // 分享图标
+                link: "https://guerlain.wcampaign.cn/?Fopenid=" + userData.original.openid, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: 'https://guerlain.wcampaign.cn/static/share-icon.jpg', // 分享图标
                 success: function () {
                     
                 }
@@ -192,8 +208,8 @@ export default class extends Component {
             wx.onMenuShareAppMessage({
                 title: '嗡嗡嗡，暴露眼力和手速的帝皇蜂大作战来一局？', // 分享标题
                 desc: '圣诞季我们一起去浦东机场玩同款游戏赢取娇兰190周年庆惊喜好礼！', // 分享描述
-                link: "http://guerlain.wcampaign.cn/?Fopenid=" + userData.original.openid, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                imgUrl: 'http://guerlain.wcampaign.cn/static/share-icon.jpg', // 分享图标
+                link: "https://guerlain.wcampaign.cn/?Fopenid=" + userData.original.openid, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: 'https://guerlain.wcampaign.cn/static/share-icon.jpg', // 分享图标
                 type: '', // 分享类型,music、video或link，不填默认为link
                 dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                 success: function () {
@@ -230,7 +246,7 @@ export default class extends Component {
                     <meta name="apple-mobile-web-app-capable" content="yes" />
                     <meta name="mobile-web-app-capable" content="yes" />
                     <link rel="manifest" href="/manifest.json" />
-                    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+                    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
                 </Head>
                 <canvas
                     ref={c => this.canvas = c}
@@ -247,7 +263,7 @@ export default class extends Component {
                     </p>
                     <p className='rankExplain'></p>
                     <p className='myScore'>
-                    <span className='listName'>我的分数</span><span className='listScore'></span>
+                    <span className='listName'>我的分数</span><span className='listScore'>500</span>
                     </p>
                     <div className='rankList'>
                         
@@ -318,7 +334,7 @@ export default class extends Component {
                             height:100vw;
                             position: absolute;
                             left: 10%;
-                            top: 26%;
+                            top: 20%;
                             display:none;
                         }
                         .palyAgainBox>.listName,.palyAgainBox>.listScore{
@@ -329,7 +345,7 @@ export default class extends Component {
                         }
                         .frendScore{
                             width: 100%;
-                            height: 17vw;
+                            height: 28vw;
                             position: relative;
                             overflow-y: auto;
                             color: white;
@@ -401,19 +417,14 @@ export default class extends Component {
                         .rankList::-webkit-scrollbar-thumb {
                             background-color: #fedaa5;
                             border-radius: 10px;
-                            //-webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,.1);
+                          
                         }
-                        // .rankList::-webkit-scrollbar-track {/*滚动条里面轨道*/
-                        //     //-webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.2);
-                        //     border-radius: 10px;
-                        //     background: #ffcd76;
-                        //     width:1px;
-                        // }
+    
                         .scrolLine{
                             position: absolute;
                             width: 2px;
                             height: 75%;
-                            right: 0.11em;
+                            right: 0.15em;
                             top: 26%;
                             border-right: 1px solid #ffcd76;
                             z-index: -1;
@@ -437,6 +448,7 @@ export default class extends Component {
                             letter-spacing:2px;
                             height: 27px;
                             line-height: 27px;
+                            overflow: hidden;
                         }
                         .listScore{
                             margin-left:4%;
@@ -454,6 +466,7 @@ export default class extends Component {
                             width: 100%;
                             text-align: center; 
                             padding: 3px 0;
+                            display: flex;
                         }
                         .rankBox{
                             width: 90%;

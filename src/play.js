@@ -12,7 +12,7 @@ export default class Play {
 	CIRCLE_DIAMETER = this.CIRCLE_RADIUS * 2
 	LINE_WIDTH = 3;
 	BLOCK_MARGIN = 1
-	SPEED = 4.5
+	SPEED = 3.5
 
 	framesPerSecond = 60;
 	startAnimationEnded = false;
