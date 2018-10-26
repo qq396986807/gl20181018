@@ -28,7 +28,7 @@ export default class Start {
         // drawImage(
         //     0,
         //     0,
-        //     'https://glcdn.wcampaign.cn/assets/bg.png',
+        //     'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/bg.png',
 		// 	canvas.width,
 		// 	canvas.height
         // )
@@ -37,7 +37,7 @@ export default class Start {
         // drawImage(
         //     0,
         //     0,
-        //     'https://glcdn.wcampaign.cn/assets/p1-t1.png',
+        //     'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/p1-t1.png',
 		// 	canvas.width,
 		// 	canvas.width / 1.953
         // )
@@ -46,7 +46,7 @@ export default class Start {
         // drawImage(
         //     canvas.width * 0.1,
         //     canvas.height * 0.23,
-        //     'https://glcdn.wcampaign.cn/assets/p1-t2.png',
+        //     'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/p1-t2.png',
         //     canvas.width * 0.8,
         //     canvas.width * 0.8 / 0.802
         // )
@@ -168,7 +168,7 @@ export default class Start {
         drawImage(
             0,
             0,
-            'https://glcdn.wcampaign.cn/assets/tutorial.png',
+            'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/tutorial.png',
 			canvas.width,
 			canvas.height
         )

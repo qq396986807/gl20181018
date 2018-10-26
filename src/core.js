@@ -9,7 +9,7 @@ export let halfCanvasWidth = null
 export let assets = []
 export let scale = 1
 
-const assetsRoot = 'https://glcdn.wcampaign.cn/assets';
+const assetsRoot = 'https://cdn.wcampaign.cn/20181019gl/h5/static/assets';
 const assetsPath = [
     `${assetsRoot}/Bar.png`,
     `${assetsRoot}/Bloc.png`,
@@ -78,7 +78,7 @@ export class Core {
         // home page assets
         for(var i=0;i<75;i++){
              //var img = assetsRoot + '/animation/welcomescreen-jpg/'+i+'.jpg';
-            var img = 'https://glcdn.wcampaign.cn/assets/animation/welcomescreen-jpg/'+i+'.jpg';
+            var img = 'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/animation/welcomescreen-jpg/'+i+'.jpg';
             homePageAssetsPath.push(img);
         }
 
@@ -96,7 +96,7 @@ export class Core {
             }
 
             //var img = assetsRoot + '/animation/tutorial-jpg/'+fileName+'.jpg';
-            var img = 'https://glcdn.wcampaign.cn/assets/animation/tutorial-jpg/'+fileName+'.jpg';
+            var img = 'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/animation/tutorial-jpg/'+fileName+'.jpg';
 
             tutorialPageAssetsPath.push(img);
         }
@@ -113,7 +113,7 @@ export class Core {
             }
 
             //var img = assetsRoot + '/animation/beedie-png/beeDie_iphone_'+fileName+'.png';
-            var img = 'https://glcdn.wcampaign.cn/assets/animation/beedie-png/beeDie_iphone_'+fileName+'.png';
+            var img = 'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/animation/beedie-png/beeDie_iphone_'+fileName+'.png';
    
             beeDiePageAssetsPath.push(img);
         }
