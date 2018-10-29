@@ -452,6 +452,43 @@ export default class Play {
 				this.end = true
 				window.cancelAnimationFrame(this.play_animation)
 
+
+				if(this.bestScore === 0 || this.score * 10 > this.bestScore) {
+                    this.newBestScore = true
+                    this.bestScore = this.score
+                    var userData = localStorage.getItem('data');
+
+                    if(userData)
+                    {
+                        try{
+                            userData = JSON.parse(userData);
+                            var data_en = wx_e(encodeURIComponent("openid:"+ userData.original.openid 
+                                                + ",currentscore:" + this.score * 10
+                                                + ",timestamp:" + new Date().getTime()));
+
+                            $.ajax({
+                                url:'https://guerlain.wechat.wcampaign.cn/user/update',
+                                type:'POST',
+                                data:{"param": data_en},
+                                success:function (data) {
+                                    if(data == 1){
+                                        alert('您刷新了记录！')
+                                    }   
+                                }
+                            });
+
+                            localStorage.setItem('bestScore', this.score * 10);
+                        }catch(err)
+                        {
+                            console.log("play.js, handleBlockCollision(), convert userData to JSON object fail!");
+                        }
+                        
+                    }else
+                    {
+                        console.log("play.js, handleBlockCollision(), userData is null!");
+                    }
+                }
+
 				//绘制蜜蜂死亡
 				this.dieBeeFlag2 = false;
 				var n = 0;//帧数
@@ -507,42 +544,7 @@ export default class Play {
 				document.removeEventListener("visibilitychange", this.onTabFocusOff)
 				return this.showStartScreen(this.run.bind(this));
 
-				
-				//结束
-				canvas.removeEventListener("touchmove", this.onTouch);
-				//scanvas.addEventListener("touchstart", this.onTouch);
-
-				if(this.bestScore === 0 || this.score * 10 > this.bestScore) {
-					this.newBestScore = true
-					this.bestScore = this.score
-					var userData = localStorage.getItem('data');
-
-					if(userData)
-					{
-						try{
-							userData = JSON.parse(userData);
-							$.ajax({
-								url:'https://guerlain.wechat.wcampaign.cn/user/update',
-								type:'POST',
-								data:{openid:userData.original.openid,currentscore:this.score * 10},
-								success:function (data) {
-									if(data == 1){
-										alert('您刷新了记录！')
-									}	
-								}
-							});
-
-							localStorage.setItem('bestScore', this.score * 10);
-						}catch(err)
-						{
-							console.log("play.js, handleBlockCollision(), convert userData to JSON object fail!");
-						}
-						
-					}else
-					{
-						console.log("play.js, handleBlockCollision(), userData is null!");
-					}
-				}
+	
 
 				window.requestAnimationFrame(this.restartLabelAnimation)
 			}
