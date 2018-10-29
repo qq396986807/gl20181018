@@ -263,41 +263,41 @@ export default class Play {
 
 	addLines() {
 
-		if (this.blocked || this.end || this.pause) {
-			return false
-		}
+		// if (this.blocked || this.end || this.pause) {
+		// 	return false
+		// }
 
-		const blockSize = (canvas.width / 5)
-		const numberOfLine = (Math.random() * 3) + 1
-		const lineHeight = Math.floor(Math.random() * (blockSize * 2)) + blockSize
-		const key = Math.floor(Math.random() * ((this.blocks.length - 1) - (this.blocks.length - 5) + 1) + (this.blocks.length - 5));
-		const randomBlock = this.blocks[key]
+		// const blockSize = (canvas.width / 5)
+		// const numberOfLine = (Math.random() * 3) + 1
+		// const lineHeight = Math.floor(Math.random() * (blockSize * 2)) + blockSize
+		// const key = Math.floor(Math.random() * ((this.blocks.length - 1) - (this.blocks.length - 5) + 1) + (this.blocks.length - 5));
+		// const randomBlock = this.blocks[key]
 
 
-		for(let i = 0; i < numberOfLine; i++) {
+		// for(let i = 0; i < numberOfLine; i++) {
 
-			const x = (randomBlock.x + blockSize) - (this.LINE_WIDTH / 2)
+		// 	const x = (randomBlock.x + blockSize) - (this.LINE_WIDTH / 2)
 			
-			this.lines.push({
-				xStart: x,
-				yStart: (randomBlock.y + blockSize) - (4 * scale),
-				xEnd: x,
-				yEnd: (randomBlock.y + blockSize) + lineHeight,
-				lineWidth: this.LINE_WIDTH * scale,
-				color: 'white'
-			})
-		}
+		// 	this.lines.push({
+		// 		xStart: x,
+		// 		yStart: (randomBlock.y + blockSize) - (4 * scale),
+		// 		xEnd: x,
+		// 		yEnd: (randomBlock.y + blockSize) + lineHeight,
+		// 		lineWidth: this.LINE_WIDTH * scale,
+		// 		color: 'white'
+		// 	})
+		// }
 	}
 
 	updateLines() {
-		if(this.end || this.pause || this.blocked) {
-			return false
-		}
+		// if(this.end || this.pause || this.blocked) {
+		// 	return false
+		// }
 		
-		for(const line of this.lines) {
-			line.yStart += this.SPEED * scale
-			line.yEnd += this.SPEED * scale
-		}
+		// for(const line of this.lines) {
+		// 	line.yStart += this.SPEED * scale
+		// 	line.yEnd += this.SPEED * scale
+		// }
 	}
 
 	addBlocks() {
