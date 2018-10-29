@@ -99,14 +99,14 @@ export default class Play {
 				point.x,
 				point.y,
 				'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/count.png',
-				150,
-				150
+				100,
+				100
 			)
 
 			drawText(
-				point.x + 160 * 0.4,
-				point.y + 150 * 0.6,
-				20 * scale,
+				point.x + 160 * 0.27,
+				point.y + 150 * 0.41,
+				15 * scale,
 				'black',
 				'Montserrat-Regular',
 				point.value
@@ -149,9 +149,9 @@ export default class Play {
 			// if(this.dieBeeFlag2){
 					// Current player available points
 				drawText(
-					this.availableCircle.x + 45,
-					this.availableCircle.y + 30,
-					20 * scale,
+					this.availableCircle.x - 2,
+					this.availableCircle.y - 10,
+					15 * scale,
 					'#ffd29a',
 					'Montserrat-Regular',
 					this.availableCircle.value
@@ -169,28 +169,28 @@ export default class Play {
 					// )
 					if(bee == 0){
 						drawImage(
-							circle.x - 50,
-							circle.y - 50,
+							circle.x - 75,
+							circle.y - 75,
 							'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/bee.png',
-							200,
-							200
+							150,
+							150
 						)
 						drawImage(
-							circle.x + 43,
-							circle.y + 70,
+							circle.x - 5,
+							circle.y + 30,
 							'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/ball.png',
-							20,
-							20
+							16,
+							16
 						)
 						
 						bee++;
 					}else{
 						drawImage(
-							circle.x + 43,
-							circle.y + 70,
+							circle.x - 5,
+							circle.y + 30,
 							'https://cdn.wcampaign.cn/20181019gl/h5/static/assets/ball.png',
-							20,
-							20
+							16,
+							16
 						)
 					}
 					
