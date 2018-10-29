@@ -308,26 +308,27 @@ export default class Play {
 
 		const margin = (this.BLOCK_MARGIN * scale)
 		const blockSize = (canvas.width / 5)
-
+		let num = Math.floor(Math.random()*5);
 		for (let i = 0; i < 5; i++) {
+			if(i !== num){
+				let x;
 
-			let x;
-
-			if (i === 0) {
-				x = margin
-			} else {
-				x = margin + (blockSize * i)
+				if (i === 0) {
+					x = margin
+				} else {
+					x = margin + (blockSize * i)
+				}
+	
+				const value = Math.floor(Math.random() * (this.availableCircle.value * 2)) + 1
+	
+				this.blocks.push({
+					x: x,
+					y: -(blockSize * 4),
+					size: blockSize - (margin * 2),
+					value: value,
+					color: this.getBlockColor(value)
+				})
 			}
-
-			const value = Math.floor(Math.random() * (this.availableCircle.value * 2)) + 1
-
-			this.blocks.push({
-				x: x,
-				y: -(blockSize * 4),
-				size: blockSize - (margin * 2),
-				value: value,
-				color: this.getBlockColor(value)
-			})
 		}
 
 		this.addLines();
