@@ -42,6 +42,7 @@ export default class Play {
 	reverseOpacity = false
 	dieBeeFlag = false;
 	dieBeeFlag2 = true;
+	disappearNum = 0;
 
 	availableCircle = {
 		x: 0,
@@ -306,9 +307,15 @@ export default class Play {
 			return false
 		}
 
+		this.disappearNum ++;
 		const margin = (this.BLOCK_MARGIN * scale)
 		const blockSize = (canvas.width / 6)
-		let num = Math.floor(Math.random()*5);
+		let num;
+		if(this.disappearNum % 5 === 0){
+			num = Math.floor(Math.random()*6);
+		}else{
+			num = 10;
+		}
 		for (let i = 0; i < 6; i++) {
 			if(i !== num){
 				let x;
