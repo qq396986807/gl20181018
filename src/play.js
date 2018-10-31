@@ -451,10 +451,19 @@ export default class Play {
 	 */
 	handleBlockCollision() {
 		if (this.hitBlock !== null && this.hitBlock.value > 0 && this.availableCircle.value > 0) {
-			this.hitBlock.value -= 1
-			this.hitBlock.color = this.getBlockColor(this.hitBlock.value)
-			this.availableCircle.value -= 1
-
+			if(this.hitBlock.value > 10 && this.availableCircle.value > 10){
+				this.hitBlock.value = this.hitBlock.value -10;
+				this.hitBlock.color = this.getBlockColor(this.hitBlock.value)
+				this.availableCircle.value = this.availableCircle.value -10;
+				for(var i=0;i<10;i++){
+					this.circles.pop()
+				}
+			}else {
+				this.hitBlock.value -= 1
+				this.hitBlock.color = this.getBlockColor(this.hitBlock.value)
+				this.availableCircle.value -= 1
+				this.circles.pop()
+			}
 			if(this.availableCircle.value === 0 && !this.end) {
 				this.end = true
 				window.cancelAnimationFrame(this.play_animation)
@@ -556,7 +565,7 @@ export default class Play {
 				window.requestAnimationFrame(this.restartLabelAnimation)
 			}
 
-			this.circles.pop()
+			// this.circles.pop()
   
 		}
 	}
