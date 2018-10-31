@@ -307,9 +307,9 @@ export default class Play {
 		}
 
 		const margin = (this.BLOCK_MARGIN * scale)
-		const blockSize = (canvas.width / 5)
+		const blockSize = (canvas.width / 6)
 		let num = Math.floor(Math.random()*5);
-		for (let i = 0; i < 5; i++) {
+		for (let i = 0; i < 6; i++) {
 			if(i !== num){
 				let x;
 
