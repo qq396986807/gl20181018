@@ -309,7 +309,7 @@ export default class Play {
 
 		this.disappearNum ++;
 		const margin = (this.BLOCK_MARGIN * scale)
-		const blockSize = (canvas.width / 6)
+		const blockSize = (canvas.width / 5)
 		let num;
 		if(this.disappearNum % 5 === 0){
 			num = Math.floor(Math.random()*6);
