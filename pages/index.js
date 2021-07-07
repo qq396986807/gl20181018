@@ -218,7 +218,18 @@ export default class extends Component {
         });
         
         // 清空用户现有记录
-        localStorage.setItem('bestScore', 0);
+        //localStorage.setItem('bestScore', 0);
+
+        // 百度统计
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?ffa39d05b2ad971fbe3170b74f5c7604";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+
+
     }
 
     render() {
